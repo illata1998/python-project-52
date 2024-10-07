@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+{% trans 'Users' %}
+{% endblock %}
+
+{% block content %}
+<div class="bg-light p-5 rounded">
+    <h1>{% trans 'Users' %}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">{% trans 'Username' %}</th>
+                <th scope="col">{% trans 'Full Name' %}</th>
+                <th scope="col">{% trans 'Creation Date' %}</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>illalalata</td>
+                <td>Illata Blase</td>
+                <td>07.10.2024</td>
+                <td>
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
