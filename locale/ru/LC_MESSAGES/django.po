@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-08 14:56+0300\n"
+"POT-Creation-Date: 2024-10-08 15:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Управляй своими задачами при помощи этого простого приложения на основе "
 "Django."
 
-#: task_manager/templates/index.html:13 task_manager/templates/navbar.html:19
+#: task_manager/templates/index.html:13 task_manager/templates/navbar.html:24
 #: task_manager/templates/users/new.html:7
 #: task_manager/templates/users/new.html:11 task_manager/users/views.py:24
 msgid "Sign Up"
@@ -47,8 +47,12 @@ msgstr "Регистрация"
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/navbar.html:16 task_manager/urls.py:14
-#: task_manager/urls.py:15
+#: task_manager/templates/navbar.html:17
+msgid "Log Out"
+msgstr "Выход"
+
+#: task_manager/templates/navbar.html:21 task_manager/views.py:9
+#: task_manager/views.py:10
 msgid "Log In"
 msgstr "Вход"
 
