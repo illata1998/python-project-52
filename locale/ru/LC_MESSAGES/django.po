@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-08 11:39+0300\n"
+"POT-Creation-Date: 2024-10-08 13:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr "Пользователи"
 msgid "Log In"
 msgstr "Войти"
 
-#: task_manager/templates/users/users.html:16 task_manager/users/forms.py:15
+#: task_manager/templates/users/users.html:16
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -62,14 +62,6 @@ msgstr "Полное имя"
 #: task_manager/templates/users/users.html:18
 msgid "Creation Date"
 msgstr "Дата создания"
-
-#: task_manager/users/forms.py:9
-msgid "First name"
-msgstr "Имя"
-
-#: task_manager/users/forms.py:12
-msgid "Last name"
-msgstr "Фамилия"
 
 #: task_manager/users/views.py:22
 msgid "Register"
