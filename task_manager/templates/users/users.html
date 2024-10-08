@@ -20,16 +20,18 @@
             </tr>
         </thead>
         <tbody>
+            {% for user in users %}
             <tr>
-                <td>1</td>
-                <td>illalalata</td>
-                <td>Illata Blase</td>
-                <td>07.10.2024</td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.first_name }} {{ user.last_name }}</td>
+                <td>{{ user.created_at }}</td>
                 <td>
                     <a href="#">Edit</a>
                     <a href="#">Delete</a>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
