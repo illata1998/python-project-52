@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-08 15:20+0300\n"
+"POT-Creation-Date: 2024-10-14 15:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,9 +35,9 @@ msgstr ""
 "Управляй своими задачами при помощи этого простого приложения на основе "
 "Django."
 
-#: task_manager/templates/index.html:13 task_manager/templates/navbar.html:24
+#: task_manager/templates/index.html:13 task_manager/templates/navbar.html:27
 #: task_manager/templates/users/new.html:7
-#: task_manager/templates/users/new.html:11 task_manager/users/views.py:24
+#: task_manager/templates/users/new.html:11 task_manager/users/views.py:27
 msgid "Sign Up"
 msgstr "Регистрация"
 
@@ -47,14 +47,23 @@ msgstr "Регистрация"
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/navbar.html:17
+#: task_manager/templates/navbar.html:19
 msgid "Log Out"
 msgstr "Выход"
 
-#: task_manager/templates/navbar.html:21 task_manager/views.py:9
+#: task_manager/templates/navbar.html:24 task_manager/views.py:9
 #: task_manager/views.py:10
 msgid "Log In"
 msgstr "Вход"
+
+#: task_manager/templates/users/delete.html:7
+#: task_manager/templates/users/delete.html:11
+msgid "Delete User"
+msgstr "Удаление пользователя"
+
+#: task_manager/templates/users/delete.html:12
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
 
 #: task_manager/templates/users/users.html:16
 msgid "Username"
@@ -68,6 +77,10 @@ msgstr "Полное имя"
 msgid "Creation Date"
 msgstr "Дата создания"
 
-#: task_manager/users/views.py:25
+#: task_manager/users/views.py:28
 msgid "Register"
 msgstr "Зарегистрироваться"
+
+#: task_manager/users/views.py:37
+msgid "Yes, delete"
+msgstr "Да, удалить"
