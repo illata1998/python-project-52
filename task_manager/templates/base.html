@@ -18,6 +18,8 @@
         <header>
             {% include 'navbar.html' %}
         </header>
+        {% if messages %}
+        {% endif %}
         <main class="container wrapper flex-grow-1">
             {% bootstrap_messages %}
             {% block content %}{% endblock %}
