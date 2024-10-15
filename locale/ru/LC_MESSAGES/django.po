@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-14 15:50+0300\n"
+"POT-Creation-Date: 2024-10-15 11:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 "Django."
 
 #: task_manager/templates/index.html:13 task_manager/templates/navbar.html:27
-#: task_manager/users/views.py:29
+#: task_manager/users/views.py:28
 msgid "Sign Up"
 msgstr "Регистрация"
 
@@ -76,17 +76,41 @@ msgstr "Полное имя"
 msgid "Creation Date"
 msgstr "Дата создания"
 
-#: task_manager/users/views.py:27
+#: task_manager/templates/users/users.html:30
+msgid "Edit"
+msgstr "Изменить"
+
+#: task_manager/templates/users/users.html:31
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/users/views.py:26
 msgid "User was registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:30
+#: task_manager/users/views.py:29
 msgid "Register"
 msgstr "Зарегистрироваться"
 
 #: task_manager/users/views.py:39
+msgid "User was deleted successfully"
+msgstr "Пользователь успешно удалён"
+
+#: task_manager/users/views.py:40
 msgid "Yes, delete"
 msgstr "Да, удалить"
+
+#: task_manager/users/views.py:48
+msgid "User was updated successfully"
+msgstr "Пользователь успешно изменён"
+
+#: task_manager/users/views.py:50
+msgid "Update"
+msgstr "Изменить"
+
+#: task_manager/users/views.py:51
+msgid "Update User"
+msgstr "Удаление пользователя"
 
 #: task_manager/views.py:12
 msgid "You were logged in"
