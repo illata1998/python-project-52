@@ -1,5 +1,4 @@
 from django.urls import path, include
-from django.views.generic import TemplateView
 from task_manager.users.views import UsersView, UserCreateView, UserDeleteView, UserUpdateView
 
 urlpatterns = [

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-15 11:56+0300\n"
+"POT-Creation-Date: 2024-10-15 14:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,10 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: task_manager/mixins.py:12
+msgid "You are not authorized! Please, log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
 #: task_manager/templates/footer.html:5
 msgid "Illata1998 on GitHub"
@@ -80,7 +84,7 @@ msgstr "Дата создания"
 msgid "Edit"
 msgstr "Изменить"
 
-#: task_manager/templates/users/users.html:31
+#: task_manager/templates/users/users.html:32
 msgid "Delete"
 msgstr "Удалить"
 
@@ -92,25 +96,25 @@ msgstr "Пользователь успешно зарегистрирован"
 msgid "Register"
 msgstr "Зарегистрироваться"
 
-#: task_manager/users/views.py:39
+#: task_manager/users/views.py:37
 msgid "User was deleted successfully"
 msgstr "Пользователь успешно удалён"
 
-#: task_manager/users/views.py:40
+#: task_manager/users/views.py:38
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: task_manager/users/views.py:48
+#: task_manager/users/views.py:46
 msgid "User was updated successfully"
 msgstr "Пользователь успешно изменён"
 
-#: task_manager/users/views.py:50
+#: task_manager/users/views.py:48
 msgid "Update"
 msgstr "Изменить"
 
-#: task_manager/users/views.py:51
+#: task_manager/users/views.py:49
 msgid "Update User"
-msgstr "Удаление пользователя"
+msgstr "Изменение пользователя"
 
 #: task_manager/views.py:12
 msgid "You were logged in"
