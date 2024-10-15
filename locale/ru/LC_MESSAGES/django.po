@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-15 14:52+0300\n"
+"POT-Creation-Date: 2024-10-15 15:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,10 @@ msgstr ""
 #: task_manager/mixins.py:12
 msgid "You are not authorized! Please, log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: task_manager/mixins.py:25
+msgid "You don't have rights to change another user."
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: task_manager/templates/footer.html:5
 msgid "Illata1998 on GitHub"
@@ -120,6 +124,6 @@ msgstr "Изменение пользователя"
 msgid "You were logged in"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:24
+#: task_manager/views.py:22
 msgid "You were logged out"
 msgstr "Вы разлогинены"
