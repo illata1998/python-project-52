@@ -9,5 +9,6 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
-    path('users/', include('task_manager.users.urls'))
+    path('users/', include('task_manager.users.urls')),
+    path('statuses/', include('task_manager.statuses.urls'))
 ]
