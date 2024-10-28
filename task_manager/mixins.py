@@ -16,6 +16,7 @@ class CustomLoginRequiredMixin(LoginRequiredMixin):
 
 class UserPermissionMixin(UserPassesTestMixin):
     login_url = reverse_lazy('users')
+    redirect_field_name = None
     def test_func(self):
         return self.get_object() == self.request.user
 
