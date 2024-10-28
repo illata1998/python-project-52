@@ -21,13 +21,13 @@ class TestUserCreateView(TestCase):
             'password1': 'lamb',
             'password2': 'lamb'
         }
-
+        initial_count = User.objects.count()
         response = self.client.get(reverse_lazy('users_create'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'form.html')
 
         response = self.client.post(reverse_lazy('users_create'), data=registration_data)
-        self.assertEqual(User.objects.count(), 1)
+        self.assertEqual(User.objects.count(), initial_count + 1)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
 
@@ -41,10 +41,13 @@ class TestUserDeleteView(UserTestCase):
     def test_self_delete(self):
         luke = self.user1
         self.client.force_login(luke)
+        initial_count = User.objects.count()
         response = self.client.post(reverse_lazy('users_delete', kwargs={'pk': luke.id}))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
-        self.assertRaises(User.DoesNotExist)
+        self.assertEqual(User.objects.count(), initial_count - 1)
+        with self.assertRaises(User.DoesNotExist):
+            User.objects.get(id=luke.id)
 
     def test_delete_other_user(self):
         luke = self.user1
@@ -79,6 +82,8 @@ class TestUserUpdateView(UserTestCase):
         self.assertRedirects(response, reverse_lazy('users'))
         updated_user = User.objects.get(id=luke.id)
         self.assertEqual(updated_user.username, 'Jedi_Master')
+        self.assertEqual(updated_user.first_name, 'Luke')
+        self.assertEqual(updated_user.last_name, 'Skywalker')
 
     def test_update_other_user(self):
         luke = self.user1
