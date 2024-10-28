@@ -16,3 +16,6 @@ build:
 
 start:
 	poetry run gunicorn task_manager.asgi:application -k uvicorn.workers.UvicornWorker
+
+test:
+	poetry run python3 manage.py test
