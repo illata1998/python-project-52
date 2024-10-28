@@ -1,0 +1,29 @@
+[
+  {
+    "model": "users.user",
+    "fields": {
+      "first_name": "Luke",
+      "last_name": "Skywalker",
+      "username": "Luke19",
+      "password": "R2D2"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "first_name": "Leia",
+      "last_name": "Organa",
+      "username": "SpaceBuns",
+      "password": "NewHope"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "first_name": "Han",
+      "last_name": "Solo",
+      "username": "Han.",
+      "password": "MillenniumFalcon"
+    }
+  }
+]
