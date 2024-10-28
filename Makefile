@@ -19,3 +19,9 @@ start:
 
 test:
 	poetry run python3 manage.py test
+
+makemessages:
+	poetry run django-admin makemessages --ignore="static" --ignore=".env"  -l ru
+
+compilemessages:
+	poetry run django-admin compilemessages
