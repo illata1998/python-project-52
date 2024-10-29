@@ -1,5 +1,4 @@
 import dj_database_url
-import psycopg2
 import os
 from dotenv import load_dotenv
 
@@ -142,7 +141,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOCALE_PATHS = ( os.path.join(BASE_DIR, 'locale'), )
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 AUTH_USER_MODEL = 'users.User'
 
