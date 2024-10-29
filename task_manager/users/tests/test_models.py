@@ -1,4 +1,4 @@
-from task_manager.users.tests.user_testcase import UserTestCase
+from task_manager.users.tests.testcase import UserTestCase
 from task_manager.users.models import User
 
 

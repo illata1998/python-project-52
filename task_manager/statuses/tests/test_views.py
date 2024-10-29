@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.test import TestCase
-from task_manager.statuses.tests.statuses_testcase import StatusTestCase
+from task_manager.statuses.tests.testcase import StatusTestCase
 from task_manager.statuses.models import Status
 
 

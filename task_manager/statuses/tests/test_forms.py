@@ -1,4 +1,4 @@
-from task_manager.statuses.tests.statuses_testcase import StatusTestCase
+from task_manager.statuses.tests.testcase import StatusTestCase
 from task_manager.statuses.forms import StatusCreationForm
 
 
