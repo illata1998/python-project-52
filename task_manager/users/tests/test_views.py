@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
-from task_manager.users.tests.testcase import UserTestCase
+
 from task_manager.users.models import User
+from task_manager.users.tests.testcase import UserTestCase
 
 
 class TestUsersView(UserTestCase):
@@ -19,7 +20,9 @@ class TestUserCreateView(UserTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'form.html')
 
-        response = self.client.post(reverse_lazy('user_create'), data=registration_data)
+        response = self.client.post(
+            reverse_lazy('user_create'), data=registration_data
+        )
         self.assertEqual(User.objects.count(), initial_count + 1)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
@@ -27,7 +30,9 @@ class TestUserCreateView(UserTestCase):
 
 class TestUserDeleteView(UserTestCase):
     def test_delete_without_authorization(self):
-        response = self.client.get(reverse_lazy('user_delete', kwargs={'pk': 1}))
+        response = self.client.get(reverse_lazy(
+            'user_delete', kwargs={'pk': 1})
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
 
@@ -35,7 +40,9 @@ class TestUserDeleteView(UserTestCase):
         user1 = self.user1
         self.client.force_login(user1)
         initial_count = User.objects.count()
-        response = self.client.post(reverse_lazy('user_delete', kwargs={'pk': user1.id}))
+        response = self.client.post(reverse_lazy(
+            'user_delete', kwargs={'pk': user1.id})
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
         self.assertEqual(User.objects.count(), initial_count - 1)
@@ -46,7 +53,9 @@ class TestUserDeleteView(UserTestCase):
         user1 = self.user1
         user2 = self.user2
         self.client.force_login(user2)
-        response = self.client.post(reverse_lazy('user_delete', kwargs={'pk': user1.id}))
+        response = self.client.post(
+            reverse_lazy('user_delete', kwargs={'pk': user1.id})
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
         unchanged_user = User.objects.get(id=user1.id)
@@ -56,7 +65,9 @@ class TestUserDeleteView(UserTestCase):
 class TestUserUpdateView(UserTestCase):
     def test_update_without_authorization(self):
         user1 = self.user1
-        response = self.client.get(reverse_lazy('user_update', kwargs={'pk': user1.id}))
+        response = self.client.get(
+            reverse_lazy('user_update', kwargs={'pk': user1.id})
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
 
@@ -64,7 +75,10 @@ class TestUserUpdateView(UserTestCase):
         user1 = self.user1
         self.client.force_login(user1)
         update_data = self.update_user_data
-        response = self.client.post(reverse_lazy('user_update', kwargs={'pk': user1.id}), update_data)
+        response = self.client.post(
+            reverse_lazy('user_update', kwargs={'pk': user1.id}),
+            update_data
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
         updated_user = User.objects.get(id=user1.id)
@@ -83,7 +97,10 @@ class TestUserUpdateView(UserTestCase):
             'password1': 'Compromised',
             'password2': 'Compromised'
         }
-        response = self.client.post(reverse_lazy('user_update', kwargs={'pk': user1.id}), update_data)
+        response = self.client.post(
+            reverse_lazy('user_update', kwargs={'pk': user1.id}),
+            update_data
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
         unchanged_user = User.objects.get(id=user1.id)

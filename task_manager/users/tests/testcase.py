@@ -1,8 +1,11 @@
 from django.test import TestCase, Client
+
 from task_manager.users.models import User
+
 
 class UserTestCase(TestCase):
     fixtures = ['test_users.json']
+
     def setUp(self):
         self.client = Client()
 

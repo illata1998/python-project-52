@@ -1,5 +1,5 @@
-from task_manager.statuses.tests.testcase import StatusTestCase
 from task_manager.statuses.forms import StatusCreationForm
+from task_manager.statuses.tests.testcase import StatusTestCase
 
 
 class CreationFormTest(StatusTestCase):

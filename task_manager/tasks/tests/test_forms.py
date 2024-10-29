@@ -1,5 +1,5 @@
-from task_manager.tasks.tests.testcase import TaskTestCase
 from task_manager.tasks.forms import TaskCreationForm
+from task_manager.tasks.tests.testcase import TaskTestCase
 
 
 class TaskCreationFormTest(TaskTestCase):

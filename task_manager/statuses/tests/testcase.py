@@ -1,9 +1,12 @@
 from django.test import TestCase, Client
+
 from task_manager.statuses.models import Status
 from task_manager.users.models import User
 
+
 class StatusTestCase(TestCase):
     fixtures = ['test_users.json', 'test_statuses.json']
+
     def setUp(self):
         self.client = Client()
 

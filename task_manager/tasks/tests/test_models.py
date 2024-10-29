@@ -1,5 +1,5 @@
-from task_manager.tasks.tests.testcase import TaskTestCase
 from task_manager.tasks.models import Task
+from task_manager.tasks.tests.testcase import TaskTestCase
 
 
 class TaskModelTest(TaskTestCase):
