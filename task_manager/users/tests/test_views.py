@@ -9,24 +9,18 @@ class TestUsersView(UserTestCase):
         response = self.client.get(reverse_lazy('users'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/users.html')
-        self.assertEqual(User.objects.count(), 3)
+        self.assertEqual(User.objects.count(), self.user_count)
 
 
-class TestUserCreateView(TestCase):
+class TestUserCreateView(UserTestCase):
     def test_create(self):
-        registration_data = {
-            'first_name': 'Isabella',
-            'last_name': 'Swan',
-            'username': 'JustBella',
-            'password1': 'lamb',
-            'password2': 'lamb'
-        }
+        registration_data = self.valid_user_data
         initial_count = User.objects.count()
-        response = self.client.get(reverse_lazy('users_create'))
+        response = self.client.get(reverse_lazy('user_create'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'form.html')
 
-        response = self.client.post(reverse_lazy('users_create'), data=registration_data)
+        response = self.client.post(reverse_lazy('user_create'), data=registration_data)
         self.assertEqual(User.objects.count(), initial_count + 1)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
@@ -34,61 +28,55 @@ class TestUserCreateView(TestCase):
 
 class TestUserDeleteView(UserTestCase):
     def test_delete_without_authorization(self):
-        response = self.client.get(reverse_lazy('users_delete', kwargs={'pk': 1}))
+        response = self.client.get(reverse_lazy('user_delete', kwargs={'pk': 1}))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
 
     def test_self_delete(self):
-        luke = self.user1
-        self.client.force_login(luke)
+        user1 = self.user1
+        self.client.force_login(user1)
         initial_count = User.objects.count()
-        response = self.client.post(reverse_lazy('users_delete', kwargs={'pk': luke.id}))
+        response = self.client.post(reverse_lazy('user_delete', kwargs={'pk': user1.id}))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
         self.assertEqual(User.objects.count(), initial_count - 1)
         with self.assertRaises(User.DoesNotExist):
-            User.objects.get(id=luke.id)
+            User.objects.get(id=user1.id)
 
     def test_delete_other_user(self):
-        luke = self.user1
-        leia = self.user2
-        self.client.force_login(leia)
-        response = self.client.post(reverse_lazy('users_delete', kwargs={'pk': luke.id}))
+        user1 = self.user1
+        user2 = self.user2
+        self.client.force_login(user2)
+        response = self.client.post(reverse_lazy('user_delete', kwargs={'pk': user1.id}))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
-        unchanged_user = User.objects.get(id=luke.id)
+        unchanged_user = User.objects.get(id=user1.id)
         self.assertEqual(unchanged_user.username, 'Luke19')
 
 
 class TestUserUpdateView(UserTestCase):
     def test_update_without_authorization(self):
-        luke = self.user1
-        response = self.client.get(reverse_lazy('users_update', kwargs={'pk': luke.id}))
+        user1 = self.user1
+        response = self.client.get(reverse_lazy('user_update', kwargs={'pk': user1.id}))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
 
     def test_self_update(self):
-        luke = self.user1
-        self.client.force_login(luke)
-        update_data = {
-            'first_name': 'Luke',
-            'last_name': 'Skywalker',
-            'username': 'Jedi_Master',
-            'password1': 'NewPassword123',
-            'password2': 'NewPassword123'
-        }
-        response = self.client.post(reverse_lazy('users_update', kwargs={'pk': luke.id}), update_data)
+        user1 = self.user1
+        self.client.force_login(user1)
+        update_data = self.update_user_data
+        response = self.client.post(reverse_lazy('user_update', kwargs={'pk': user1.id}), update_data)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
-        updated_user = User.objects.get(id=luke.id)
+        updated_user = User.objects.get(id=user1.id)
         self.assertEqual(updated_user.username, 'Jedi_Master')
         self.assertEqual(updated_user.first_name, 'Luke')
         self.assertEqual(updated_user.last_name, 'Skywalker')
 
     def test_update_other_user(self):
-        luke = self.user1
-        leia = self.user2
-        self.client.force_login(leia)
+        user1 = self.user1
+        user2 = self.user2
+        self.client.force_login(user2)
         update_data = {
             'first_name': 'Modified',
             'last_name': 'User',
@@ -96,8 +84,8 @@ class TestUserUpdateView(UserTestCase):
             'password1': 'Compromised',
             'password2': 'Compromised'
         }
-        response = self.client.post(reverse_lazy('users_update', kwargs={'pk': luke.id}), update_data)
+        response = self.client.post(reverse_lazy('user_update', kwargs={'pk': user1.id}), update_data)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
-        unchanged_user = User.objects.get(id=luke.id)
+        unchanged_user = User.objects.get(id=user1.id)
         self.assertEqual(unchanged_user.username, 'Luke19')

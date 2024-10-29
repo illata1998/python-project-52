@@ -16,14 +16,5 @@
       "username": "SpaceBuns",
       "password": "NewHope"
     }
-  },
-  {
-    "model": "users.user",
-    "fields": {
-      "first_name": "Han",
-      "last_name": "Solo",
-      "username": "Han.",
-      "password": "MillenniumFalcon"
-    }
   }
 ]
