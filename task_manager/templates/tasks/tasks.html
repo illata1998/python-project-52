@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+{% trans 'Tasks' %}
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>{% trans 'Tasks' %}</h1>
+    <form action="{% url 'task_create' %}" method="get">
+        {% csrf_token %}
+        <input class="btn btn-primary" type="submit" value="{% trans 'Create Task' %}">
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">{% trans 'Name' %}</th>
+                <th scope="col">{% trans 'Status' %}</th>
+                <th scope="col">{% trans 'Author' %}</th>
+                <th scope="col">{% trans 'Executor' %}</th>
+                <th scope="col">{% trans 'Creation Date' %}</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.author }}</td>
+                <td>{{ task.executor }}</td>
+                <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'task_update' task.id %}">{% trans 'Edit' %}</a>
+                    <br>
+                    <a href="{% url 'task_delete' task.id %}">{% trans 'Delete' %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
