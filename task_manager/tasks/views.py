@@ -1,30 +1,27 @@
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic import CreateView, DeleteView, UpdateView
-from task_manager.tasks.models import Task
-from task_manager.tasks.forms import TaskCreationForm
-from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView, DeleteView, UpdateView, DetailView
+from django_filters.views import FilterView
+
 from task_manager.mixins import CustomLoginRequiredMixin, AuthorPermissionMixin
+from task_manager.tasks.filters import TaskFilter
+from task_manager.tasks.forms import TaskCreationForm
+from task_manager.tasks.models import Task
 
 
-
-class TasksView(CustomLoginRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        tasks = Task.objects.order_by('id').all()
-        return render(request, 'tasks/tasks.html', context={
-            'tasks': tasks,
-            'button_name': _('Create Task')
-        })
+class TasksView(CustomLoginRequiredMixin, FilterView):
+    model = Task
+    template_name = 'tasks/tasks.html'
+    filterset_class = TaskFilter
+    context_object_name = 'tasks'
+    ordering = 'id'
 
 
-class TaskShowView(CustomLoginRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        task = get_object_or_404(Task, id=kwargs['pk'])
-        return render(request, 'tasks/show.html', context={
-            'task': task,
-        })
+class TaskShowView(CustomLoginRequiredMixin, DetailView):
+    model = Task
+    template_name = 'tasks/show.html'
+    context_object_name = 'task'
 
 
 class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -43,7 +40,10 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskDeleteView(CustomLoginRequiredMixin, AuthorPermissionMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(CustomLoginRequiredMixin,
+                     AuthorPermissionMixin,
+                     SuccessMessageMixin,
+                     DeleteView):
     template_name = 'tasks/delete.html'
     model = Task
     success_url = reverse_lazy('tasks')
