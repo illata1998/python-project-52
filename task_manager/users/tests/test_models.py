@@ -16,7 +16,7 @@ class UserModelTestCase(UserTestCase):
         self.assertEqual(user.last_name, self.valid_user_data['last_name'])
         self.assertEqual(str(user), self.valid_user_data['username'])
 
-    def test_the_same_username(self):
+    def test_duplicate_username(self):
         User.objects.create(
             first_name=self.valid_user_data['first_name'],
             last_name=self.valid_user_data['last_name'],

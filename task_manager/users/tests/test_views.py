@@ -1,5 +1,4 @@
 from django.urls import reverse_lazy
-from django.test import TestCase
 from task_manager.users.tests.testcase import UserTestCase
 from task_manager.users.models import User
 
@@ -51,7 +50,7 @@ class TestUserDeleteView(UserTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('users'))
         unchanged_user = User.objects.get(id=user1.id)
-        self.assertEqual(unchanged_user.username, 'Luke19')
+        self.assertEqual(unchanged_user.username, user1.username)
 
 
 class TestUserUpdateView(UserTestCase):
