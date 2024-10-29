@@ -1,8 +1,8 @@
 from django.contrib import admin
-from django.urls import path, include, reverse_lazy
+from django.urls import path, include
 from django.views.generic import TemplateView
-from task_manager.views import CustomLoginView, CustomLogoutView
 
+from task_manager.views import CustomLoginView, CustomLogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
