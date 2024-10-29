@@ -40,8 +40,8 @@ class TaskDeleteView(CustomLoginRequiredMixin, UserPermissionMixin, SuccessMessa
     model = Task
     success_url = reverse_lazy('tasks')
     success_message = _('Task was deleted successfully')
-    login_url = reverse_lazy('tasks')
-    access_denied_message = _("Only the task's author can delete it")
+    permission_denied_url = reverse_lazy('tasks')
+    permission_denied_message = _("Only the task's author can delete it")
     extra_context = {'button_name': _('Yes, delete')}
 
 
