@@ -16,15 +16,16 @@ class CustomLoginRequiredMixin(LoginRequiredMixin):
 
 
 class UserPermissionMixin(UserPassesTestMixin):
-    login_url = reverse_lazy('users')
+    login_url = None
     redirect_field_name = None
+    access_denied_message = ''
     def test_func(self):
         return self.get_object() == self.request.user
 
     def dispatch(self, request, *args, **kwargs):
         user_test_result = self.get_test_func()()
         if not user_test_result:
-            messages.add_message(request, messages.ERROR, _("You don't have rights to change another user."))
-            return redirect('users')
+            messages.add_message(request, messages.ERROR, self.access_denied_message)
+            return redirect(self.login_url)
         return super().dispatch(request, *args, **kwargs)
 
