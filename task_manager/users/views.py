@@ -35,6 +35,8 @@ class UserDeleteView(CustomLoginRequiredMixin, UserPermissionMixin, SuccessMessa
     model = User
     success_url = reverse_lazy('users')
     success_message = _('User was deleted successfully')
+    login_url = reverse_lazy('users')
+    access_denied_message = _("You don't have rights to change another user.")
     extra_context = {'button_name': _('Yes, delete')}
 
 
@@ -44,6 +46,8 @@ class UserUpdateView(CustomLoginRequiredMixin, UserPermissionMixin, SuccessMessa
     template_name = 'form.html'
     success_url = reverse_lazy('users')
     success_message = _('User was updated successfully')
+    login_url = reverse_lazy('users')
+    access_denied_message = _("You don't have rights to change another user.")
     extra_context = {
         'button_name': _('Update'),
         'title': _('Update User')
