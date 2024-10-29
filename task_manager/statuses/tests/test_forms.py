@@ -18,7 +18,5 @@ class CreationFormTest(StatusTestCase):
         self.assertIn('name', form.errors)
 
     def test_valid_form(self):
-        form = StatusCreationForm(data={
-            'name': 'status3'
-        })
+        form = StatusCreationForm(data=self.valid_status_data)
         self.assertTrue(form.is_valid())

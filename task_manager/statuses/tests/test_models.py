@@ -1,16 +1,20 @@
-from django.test import TestCase
+from task_manager.statuses.tests.testcase import StatusTestCase
 from task_manager.statuses.models import Status
 
 
-class StatusTestCase(TestCase):
-    def setUp(self):
-        self.status = Status.objects.create(
-            name='Test Status'
-        )
-
+class StatusModelTestCase(StatusTestCase):
     def test_status_creation(self):
-        self.assertEqual(self.status.name, 'Test Status')
+        status = Status.objects.create(
+            name=self.valid_status_data['name']
+        )
+        self.assertEqual(status.name, self.valid_status_data['name'])
+        self.assertEqual(str(status), self.valid_status_data['name'])
 
     def test_duplicate_status_name(self):
+        Status.objects.create(
+            name=self.valid_status_data['name']
+        )
         with self.assertRaises(Exception):
-            Status.objects.create(name='Test Status')
+            Status.objects.create(
+                name=self.valid_status_data['name']
+            )

@@ -6,7 +6,15 @@ class StatusTestCase(TestCase):
     fixtures = ['test_users.json', 'test_statuses.json']
     def setUp(self):
         self.client = Client()
-        self.status1 = Status.objects.get(name='status1')
-        self.status2 = Status.objects.get(name='status2')
-        self.user1 = User.objects.get(username='Luke19')
-        self.user2 = User.objects.get(username='SpaceBuns')
+
+        self.status1 = Status.objects.get(id=1)
+        self.status2 = Status.objects.get(id=2)
+
+        self.user1 = User.objects.get(id=1)
+        self.user2 = User.objects.get(id=2)
+
+        self.status_count = Status.objects.count()
+
+        self.valid_status_data = {
+            'name': 'status'
+        }
