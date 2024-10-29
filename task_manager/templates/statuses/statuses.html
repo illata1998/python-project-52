@@ -9,7 +9,7 @@
 {% block content %}
 <div>
     <h1>{% trans 'Statuses' %}</h1>
-    <form action="{% url 'statuses_create' %}" method="get">
+    <form action="{% url 'status_create' %}" method="get">
         {% csrf_token %}
         <input class="btn btn-primary" type="submit" value="{% trans 'Create Status' %}">
     </form>
@@ -29,9 +29,9 @@
                 <td>{{ status.name }}</td>
                 <td>{{ status.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
-                    <a href="{% url 'statuses_update' status.id %}">{% trans 'Edit' %}</a>
+                    <a href="{% url 'status_update' status.id %}">{% trans 'Edit' %}</a>
                     <br>
-                    <a href="{% url 'statuses_delete' status.id %}">{% trans 'Delete' %}</a>
+                    <a href="{% url 'status_delete' status.id %}">{% trans 'Delete' %}</a>
                 </td>
             </tr>
             {% endfor %}
