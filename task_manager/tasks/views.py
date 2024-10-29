@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
@@ -16,6 +16,14 @@ class TasksView(CustomLoginRequiredMixin, View):
         return render(request, 'tasks/tasks.html', context={
             'tasks': tasks,
             'button_name': _('Create Task')
+        })
+
+
+class TaskShowView(CustomLoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, id=kwargs['pk'])
+        return render(request, 'tasks/show.html', context={
+            'task': task,
         })
 
 
