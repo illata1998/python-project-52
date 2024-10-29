@@ -8,7 +8,7 @@ from task_manager.statuses.forms import StatusCreationForm
 from task_manager.statuses.models import Status
 
 
-class StatusesView(CustomLoginRequiredMixin, ListView):
+class StatusesListView(CustomLoginRequiredMixin, ListView):
     model = Status
     template_name = 'statuses/statuses.html'
     context_object_name = 'statuses'
@@ -32,7 +32,7 @@ class StatusCreateView(CustomLoginRequiredMixin,
 class StatusDeleteView(CustomLoginRequiredMixin,
                        SuccessMessageMixin,
                        DeleteView):
-    template_name = 'statuses/delete.html'
+    template_name = 'statuses/task_delete.html'
     model = Status
     success_url = reverse_lazy('statuses')
     success_message = _('Status was deleted successfully')

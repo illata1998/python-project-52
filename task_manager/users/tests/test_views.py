@@ -4,7 +4,7 @@ from task_manager.users.models import User
 from task_manager.users.tests.testcase import UserTestCase
 
 
-class TestUsersView(UserTestCase):
+class TestUsersListView(UserTestCase):
     def test_users(self):
         response = self.client.get(reverse_lazy('users'))
         self.assertEqual(response.status_code, 200)

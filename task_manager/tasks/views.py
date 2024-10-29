@@ -10,7 +10,7 @@ from task_manager.tasks.forms import TaskCreationForm
 from task_manager.tasks.models import Task
 
 
-class TasksView(CustomLoginRequiredMixin, FilterView):
+class TasksListView(CustomLoginRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/tasks.html'
     filterset_class = TaskFilter
@@ -18,9 +18,9 @@ class TasksView(CustomLoginRequiredMixin, FilterView):
     ordering = 'id'
 
 
-class TaskShowView(CustomLoginRequiredMixin, DetailView):
+class TaskDetailView(CustomLoginRequiredMixin, DetailView):
     model = Task
-    template_name = 'tasks/show.html'
+    template_name = 'tasks/task_detail.html'
     context_object_name = 'task'
 
 
@@ -44,7 +44,7 @@ class TaskDeleteView(CustomLoginRequiredMixin,
                      AuthorPermissionMixin,
                      SuccessMessageMixin,
                      DeleteView):
-    template_name = 'tasks/delete.html'
+    template_name = 'tasks/status_delete.html'
     model = Task
     success_url = reverse_lazy('tasks')
     success_message = _('Task was deleted successfully')

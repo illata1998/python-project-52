@@ -4,7 +4,7 @@ from task_manager.statuses.models import Status
 from task_manager.statuses.tests.testcase import StatusTestCase
 
 
-class TestStatusesView(StatusTestCase):
+class TestStatusesListView(StatusTestCase):
     def test_statuses_authorized(self):
         user1 = self.user1
         self.client.force_login(user1)

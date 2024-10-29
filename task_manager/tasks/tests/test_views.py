@@ -55,6 +55,31 @@ class TaskFilterTest(TaskTestCase):
         self.assertEqual(tasks, expected_tasks)
 
 
+class TestTaskDetailView(TaskTestCase):
+    def test_detail_view_unauthorized(self):
+        response = self.client.get(
+            reverse_lazy('task_detail', kwargs={'pk': self.task1.id})
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('login'))
+
+    def test_detail_view_authorized(self):
+        self.client.force_login(self.user1)
+        response = self.client.get(
+            reverse_lazy('task_detail', kwargs={'pk': self.task1.id})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'tasks/task_detail.html')
+        self.assertEqual(response.context['task'], self.task1)
+
+    def test_detail_view_nonexistent_task(self):
+        self.client.force_login(self.user1)
+        response = self.client.get(
+            reverse_lazy('task_detail', kwargs={'pk': 99999})
+        )
+        self.assertEqual(response.status_code, 404)
+
+
 class TestTaskCreateView(TaskTestCase):
     def test_create_task_authorized(self):
         user1 = self.user1
@@ -72,6 +97,10 @@ class TestTaskCreateView(TaskTestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_create_task_unauthorized(self):
+        response = self.client.get(reverse_lazy('task_create'))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('login'))
+
         creation_data = self.valid_task_data
         response = self.client.post(
             reverse_lazy('task_create'), data=creation_data
@@ -148,6 +177,12 @@ class TestTaskUpdateView(TaskTestCase):
         user = self.user2
         task = self.task1
         self.client.force_login(user)
+
+        response = self.client.get(
+            reverse_lazy('task_update', kwargs={'pk': task.id})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'form.html')
 
         update_data = self.valid_task_data.copy()
         update_data.update({

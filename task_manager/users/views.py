@@ -9,7 +9,7 @@ from task_manager.users.forms import (CustomUserCreationForm,
 from task_manager.users.models import User
 
 
-class UsersView(ListView):
+class UsersListView(ListView):
     model = User
     template_name = 'users/users.html'
     context_object_name = 'users'
@@ -32,7 +32,7 @@ class UserDeleteView(CustomLoginRequiredMixin,
                      UserPermissionMixin,
                      SuccessMessageMixin,
                      DeleteView):
-    template_name = 'users/delete.html'
+    template_name = 'users/user_delete.html'
     model = User
     success_url = reverse_lazy('users')
     success_message = _('User was deleted successfully')
