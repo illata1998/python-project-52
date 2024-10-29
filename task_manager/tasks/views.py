@@ -6,7 +6,7 @@ from task_manager.tasks.models import Task
 from task_manager.tasks.forms import TaskCreationForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
-from task_manager.mixins import CustomLoginRequiredMixin, UserPermissionMixin
+from task_manager.mixins import CustomLoginRequiredMixin, AuthorPermissionMixin
 
 
 
@@ -35,7 +35,7 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskDeleteView(CustomLoginRequiredMixin, UserPermissionMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(CustomLoginRequiredMixin, AuthorPermissionMixin, SuccessMessageMixin, DeleteView):
     template_name = 'tasks/delete.html'
     model = Task
     success_url = reverse_lazy('tasks')
