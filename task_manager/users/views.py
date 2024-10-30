@@ -44,7 +44,7 @@ class UserDeleteView(CustomLoginRequiredMixin,
         "You don't have rights to change another user."
     )
     access_denied_message = _("You don't have rights to change another user.")
-    protected_object_url = _('user_list')
+    protected_object_url = reverse_lazy('user_list')
     protected_object_message = _(
         'Cannot delete this user because they are being used'
     )

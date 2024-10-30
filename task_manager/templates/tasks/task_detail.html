@@ -26,7 +26,7 @@
             <dd class="col-sm-9">{{ task.created_at|date:"d.m.Y H:i" }}</dd>
 
         </dl>
-        <p class="fw-bold">Labels:</p>
+        <p class="fw-bold">{% trans 'Labels' %}:</p>
         <ul>
             {% for label in task.labels.all %}
                 <li>{{ label }}</li>
