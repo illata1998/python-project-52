@@ -4,7 +4,7 @@ from task_manager.tasks.models import Task
 from task_manager.tasks.tests.testcase import TaskTestCase
 
 
-class TestTaskView(TaskTestCase):
+class TestTaskListView(TaskTestCase):
     def test_task_list_unauthorized(self):
         response = self.client.get(reverse_lazy('task_list'))
         self.assertEqual(response.status_code, 302)
@@ -50,6 +50,15 @@ class TestTaskFilter(TaskTestCase):
         self.assertEqual(response.status_code, 200)
         tasks = set(response.context['tasks'])
         expected_tasks = set(Task.objects.filter(author=self.user1))
+        self.assertEqual(tasks, expected_tasks)
+
+    def test_task_filter_by_label(self):
+        response = self.client.get(
+            reverse_lazy('task_list'), {'label': self.label1.id}
+        )
+        self.assertEqual(response.status_code, 200)
+        tasks = set(response.context['tasks'])
+        expected_tasks = set(Task.objects.filter(labels=self.label1))
         self.assertEqual(tasks, expected_tasks)
 
 
