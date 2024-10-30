@@ -8,7 +8,7 @@ class TestUsersListView(UserTestCase):
     def test_users(self):
         response = self.client.get(reverse_lazy('users'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/users.html')
+        self.assertTemplateUsed(response, 'users/user_list.html')
         self.assertEqual(User.objects.count(), self.user_count)
 
 

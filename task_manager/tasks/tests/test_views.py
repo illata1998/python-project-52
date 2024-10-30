@@ -15,7 +15,7 @@ class TestTasksView(TaskTestCase):
         self.client.force_login(user)
         response = self.client.get(reverse_lazy('tasks'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'tasks/tasks.html')
+        self.assertTemplateUsed(response, 'tasks/task_list.html')
         self.assertEqual(Task.objects.count(), self.task_count)
 
 

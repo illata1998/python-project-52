@@ -8,10 +8,10 @@ from task_manager.statuses.forms import StatusCreationForm
 from task_manager.statuses.models import Status
 
 
-class StatusesListView(CustomLoginRequiredMixin, ListView):
+class StatusListView(CustomLoginRequiredMixin, ListView):
     model = Status
-    template_name = 'statuses/statuses.html'
-    context_object_name = 'statuses'
+    template_name = 'statuses/status_list.html'
+    context_object_name = 'status_list'
     ordering = ['id']
 
 
@@ -21,7 +21,7 @@ class StatusCreateView(CustomLoginRequiredMixin,
     model = Status
     template_name = 'form.html'
     form_class = StatusCreationForm
-    success_url = reverse_lazy('statuses')
+    success_url = reverse_lazy('status_list')
     success_message = _('Status was created successfully')
     extra_context = {
         'title': _('Create Status'),
@@ -32,9 +32,9 @@ class StatusCreateView(CustomLoginRequiredMixin,
 class StatusDeleteView(CustomLoginRequiredMixin,
                        SuccessMessageMixin,
                        DeleteView):
-    template_name = 'statuses/task_delete.html'
+    template_name = 'statuses/status_delete.html'
     model = Status
-    success_url = reverse_lazy('statuses')
+    success_url = reverse_lazy('status_list')
     success_message = _('Status was deleted successfully')
     extra_context = {'button_name': _('Yes, delete')}
 
@@ -45,7 +45,7 @@ class StatusUpdateView(CustomLoginRequiredMixin,
     form_class = StatusCreationForm
     model = Status
     template_name = 'form.html'
-    success_url = reverse_lazy('statuses')
+    success_url = reverse_lazy('status_list')
     success_message = _('Status was updated successfully')
     extra_context = {
         'button_name': _('Update'),
