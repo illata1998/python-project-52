@@ -148,7 +148,7 @@ LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 AUTH_USER_MODEL = 'users.User'
 
 ROLLBAR = {
-    'access_token': 'cdb9cdcdb640448c80c45a2f80540b04',
+    'access_token': os.getenv('ACCESS_TOKEN'),
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
