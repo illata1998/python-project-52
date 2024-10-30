@@ -15,7 +15,7 @@ class LabelListView(CustomLoginRequiredMixin, ListView):
     ordering = ['id']
 
 
-class StatusCreateView(CustomLoginRequiredMixin,
+class LabelCreateView(CustomLoginRequiredMixin,
                        SuccessMessageMixin,
                        CreateView):
     model = Label
