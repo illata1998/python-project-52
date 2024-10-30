@@ -3,7 +3,9 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 
-from task_manager.mixins import CustomLoginRequiredMixin, UserPermissionMixin
+from task_manager.mixins import (CustomLoginRequiredMixin,
+                                 UserPermissionMixin,
+                                 ProtectErrorMixin)
 from task_manager.users.forms import (CustomUserCreationForm,
                                       CustomUserChangeForm)
 from task_manager.users.models import User
@@ -30,6 +32,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 class UserDeleteView(CustomLoginRequiredMixin,
                      UserPermissionMixin,
+                     ProtectErrorMixin,
                      SuccessMessageMixin,
                      DeleteView):
     template_name = 'users/user_delete.html'
@@ -41,6 +44,10 @@ class UserDeleteView(CustomLoginRequiredMixin,
         "You don't have rights to change another user."
     )
     access_denied_message = _("You don't have rights to change another user.")
+    protected_object_url = _('user_list')
+    protected_object_message = _(
+        'Cannot delete this user because they are being used'
+    )
     extra_context = {'button_name': _('Yes, delete')}
 
 
