@@ -2,7 +2,7 @@ from task_manager.tasks.models import Task
 from task_manager.tasks.tests.testcase import TaskTestCase
 
 
-class TaskModelTest(TaskTestCase):
+class TestTaskModel(TaskTestCase):
     def test_task_creation(self):
         task = Task.objects.create(
             name=self.valid_task_data['name'],

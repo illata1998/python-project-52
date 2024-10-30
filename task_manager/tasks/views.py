@@ -10,7 +10,7 @@ from task_manager.tasks.forms import TaskCreationForm
 from task_manager.tasks.models import Task
 
 
-class TasksListView(CustomLoginRequiredMixin, FilterView):
+class TaskListView(CustomLoginRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/task_list.html'
     filterset_class = TaskFilter
@@ -28,7 +28,7 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
     template_name = 'form.html'
     form_class = TaskCreationForm
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('task_list')
     success_message = _('Task was created successfully')
     extra_context = {
         'title': _('Create Task'),
@@ -44,11 +44,11 @@ class TaskDeleteView(CustomLoginRequiredMixin,
                      AuthorPermissionMixin,
                      SuccessMessageMixin,
                      DeleteView):
-    template_name = 'tasks/status_delete.html'
+    template_name = 'tasks/task_delete.html'
     model = Task
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('task_list')
     success_message = _('Task was deleted successfully')
-    permission_denied_url = reverse_lazy('tasks')
+    permission_denied_url = reverse_lazy('task_list')
     permission_denied_message = _("Only the task's author can delete it")
     extra_context = {'button_name': _('Yes, delete')}
 
@@ -57,7 +57,7 @@ class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = TaskCreationForm
     model = Task
     template_name = 'form.html'
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('task_list')
     success_message = _('Task was updated successfully')
     extra_context = {
         'button_name': _('Update'),

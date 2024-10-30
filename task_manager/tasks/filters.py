@@ -6,13 +6,13 @@ from task_manager.tasks.models import Task
 
 
 class TaskFilter(django_filters.FilterSet):
-    users_tasks = django_filters.BooleanFilter(
+    user_own_tasks = django_filters.BooleanFilter(
         label=_("Only my own tasks"),
         widget=CheckboxInput,
-        method='get_users_tasks',
+        method='get_user_own_tasks',
     )
 
-    def get_users_tasks(self, queryset, name, value):
+    def get_user_own_tasks(self, queryset, name, value):
         if value:
             user = self.request.user
             return queryset.filter(author=user)

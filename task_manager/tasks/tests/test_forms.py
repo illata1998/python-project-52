@@ -2,7 +2,7 @@ from task_manager.tasks.forms import TaskCreationForm
 from task_manager.tasks.tests.testcase import TaskTestCase
 
 
-class TaskCreationFormTest(TaskTestCase):
+class TestTaskCreationForm(TaskTestCase):
     def test_valid_data(self):
         author = self.user1
         form = TaskCreationForm(data=self.valid_task_data)
