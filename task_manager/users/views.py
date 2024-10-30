@@ -9,7 +9,7 @@ from task_manager.users.forms import (CustomUserCreationForm,
 from task_manager.users.models import User
 
 
-class UsersListView(ListView):
+class UserListView(ListView):
     model = User
     template_name = 'users/user_list.html'
     context_object_name = 'users'
@@ -34,9 +34,9 @@ class UserDeleteView(CustomLoginRequiredMixin,
                      DeleteView):
     template_name = 'users/user_delete.html'
     model = User
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('user_list')
     success_message = _('User was deleted successfully')
-    permission_denied_url = reverse_lazy('users')
+    permission_denied_url = reverse_lazy('user_list')
     permission_denied_message = _(
         "You don't have rights to change another user."
     )
@@ -51,9 +51,9 @@ class UserUpdateView(CustomLoginRequiredMixin,
     form_class = CustomUserChangeForm
     model = User
     template_name = 'form.html'
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('user_list')
     success_message = _('User was updated successfully')
-    permission_denied_url = reverse_lazy('users')
+    permission_denied_url = reverse_lazy('user_list')
     permission_denied_message = _(
         "You don't have rights to change another user."
     )
