@@ -1,5 +1,6 @@
 # Task Manager
 [![Actions Status](https://github.com/illata1998/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/illata1998/python-project-52/actions)
+<a href="https://codeclimate.com/github/illata1998/python-project-52/maintainability"><img src="https://api.codeclimate.com/v1/badges/34a8ba5d129e6d22ae28/maintainability" /></a>
 
 ## Description
 Task Manager is a simple web application that helps users manage their tasks.
