@@ -28,7 +28,9 @@
         </dl>
         <p class="fw-bold">Labels:</p>
         <ul>
-            <li>lbl</li>
+            {% for label in task.labels.all %}
+                <li>{{ label }}</li>
+            {% endfor %}
         </ul>
         <a href="{% url 'task_update' task.id %}">{% trans 'Edit' %}</a>
         <br>

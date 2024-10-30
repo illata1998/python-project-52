@@ -1,3 +1,4 @@
+from django.db.models.deletion import ProtectedError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -8,3 +9,11 @@ class Label(models.Model):
 
     def __str__(self):
         return self.name
+
+    def delete(self, *args, **kwargs):
+        if self.task_set.exists():
+            raise ProtectedError(
+                _('Cannot delete this label because it is being used'),
+                self.task_set.all()
+            )
+        return super().delete(*args, **kwargs)
