@@ -2,7 +2,7 @@ from task_manager.users.models import User
 from task_manager.users.tests.testcase import UserTestCase
 
 
-class UserModelTestCase(UserTestCase):
+class TestUserModel(UserTestCase):
     def test_user_creation(self):
         User.objects.create(
             first_name=self.valid_user_data['first_name'],

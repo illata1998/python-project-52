@@ -2,7 +2,7 @@ from task_manager.statuses.models import Status
 from task_manager.statuses.tests.testcase import StatusTestCase
 
 
-class StatusModelTestCase(StatusTestCase):
+class TestStatusModel(StatusTestCase):
     def test_status_creation(self):
         status = Status.objects.create(
             name=self.valid_status_data['name']

@@ -2,7 +2,7 @@ from task_manager.users.forms import CustomUserCreationForm
 from task_manager.users.tests.testcase import UserTestCase
 
 
-class UserCreateFormTest(UserTestCase):
+class TestUserCustomCreationForm(UserTestCase):
     def test_valid_data(self):
         form = CustomUserCreationForm(data=self.valid_user_data)
         self.assertTrue(form.is_valid())

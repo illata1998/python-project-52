@@ -2,7 +2,7 @@ from task_manager.statuses.forms import StatusCreationForm
 from task_manager.statuses.tests.testcase import StatusTestCase
 
 
-class CreationFormTest(StatusTestCase):
+class TestStatusCreationForm(StatusTestCase):
     def test_missing_fields(self):
         form = StatusCreationForm(data={
             'name': ''
