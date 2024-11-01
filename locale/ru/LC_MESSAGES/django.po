@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-01 15:54+0300\n"
+"POT-Creation-Date: 2024-11-01 16:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,10 +173,9 @@ msgstr "Менеджер задач"
 msgid "Manage your tasks with this simple Django-based web application."
 msgstr "Управляйте своими задачами при помощи этого простого Django-приложения"
 
-#: task_manager/templates/index.html:13 task_manager/templates/navbar.html:36
-#: task_manager/users/views.py:28
-msgid "Sign Up"
-msgstr "Регистрация"
+#: task_manager/templates/index.html:13
+msgid "Try now"
+msgstr "Попробовать"
 
 #: task_manager/templates/labels/label_delete.html:7
 #: task_manager/templates/labels/label_delete.html:11
@@ -239,6 +238,10 @@ msgstr "Выход"
 #: task_manager/templates/navbar.html:33 task_manager/views.py:15
 msgid "Log In"
 msgstr "Вход"
+
+#: task_manager/templates/navbar.html:36 task_manager/users/views.py:28
+msgid "Sign Up"
+msgstr "Регистрация"
 
 #: task_manager/templates/statuses/status_delete.html:7
 #: task_manager/templates/statuses/status_delete.html:11
