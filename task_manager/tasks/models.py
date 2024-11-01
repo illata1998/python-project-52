@@ -7,7 +7,10 @@ from task_manager.labels.models import Label
 
 
 class Task(models.Model):
-    name = models.CharField(blank=False, unique=True, verbose_name=_('Name'))
+    name = models.CharField(max_length=255,
+                            blank=False,
+                            unique=True,
+                            verbose_name=_('Name'))
     description = models.TextField(blank=False, verbose_name=_('Description'))
     author = models.ForeignKey(User, on_delete=models.PROTECT,
                                verbose_name=_('Author'), related_name='Author')
