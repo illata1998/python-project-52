@@ -20,6 +20,9 @@ start:
 test:
 	poetry run python3 manage.py test
 
+testcov:
+	poetry run coverage run --source='.' manage.py test
+
 makemessages:
 	poetry run django-admin makemessages --ignore="static" --ignore=".env"  -l ru
 
