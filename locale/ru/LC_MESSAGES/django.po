@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 14:12+0300\n"
+"POT-Creation-Date: 2024-11-01 15:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/labels/models.py:7 task_manager/statuses/models.py:6
-#: task_manager/tasks/models.py:10
+#: task_manager/labels/models.py:8 task_manager/statuses/models.py:7
+#: task_manager/tasks/models.py:13
 #: task_manager/templates/labels/label_list.html:20
 #: task_manager/templates/statuses/status_list.html:20
 #: task_manager/templates/tasks/task_list.html:29
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/labels/models.py:16 task_manager/labels/views.py:42
+#: task_manager/labels/models.py:18 task_manager/labels/views.py:42
 msgid "Cannot delete this label because it is being used"
 msgstr "Невозможно удалить метку, потому что она используется"
 
@@ -105,29 +105,29 @@ msgstr "Только свои задачи"
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/tasks/models.py:11
+#: task_manager/tasks/models.py:14
 msgid "Description"
 msgstr "Описание"
 
-#: task_manager/tasks/models.py:13
+#: task_manager/tasks/models.py:16
 #: task_manager/templates/tasks/task_detail.html:19
 #: task_manager/templates/tasks/task_list.html:31
 msgid "Author"
 msgstr "Автор"
 
-#: task_manager/tasks/models.py:15
+#: task_manager/tasks/models.py:18
 #: task_manager/templates/tasks/task_detail.html:23
 #: task_manager/templates/tasks/task_list.html:30
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/tasks/models.py:17
+#: task_manager/tasks/models.py:20
 #: task_manager/templates/tasks/task_detail.html:21
 #: task_manager/templates/tasks/task_list.html:32
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/tasks/models.py:20
+#: task_manager/tasks/models.py:23
 #: task_manager/templates/labels/label_list.html:6
 #: task_manager/templates/labels/label_list.html:11
 #: task_manager/templates/navbar.html:20
@@ -237,7 +237,6 @@ msgid "Log Out"
 msgstr "Выход"
 
 #: task_manager/templates/navbar.html:33 task_manager/views.py:15
-#: task_manager/views.py:16
 msgid "Log In"
 msgstr "Вход"
 
@@ -312,6 +311,10 @@ msgstr "Изменение пользователя"
 #: task_manager/views.py:13
 msgid "You were logged in"
 msgstr "Вы залогинены"
+
+#: task_manager/views.py:16
+msgid "Enter"
+msgstr "Войти"
 
 #: task_manager/views.py:24
 msgid "You were logged out"
