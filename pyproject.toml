@@ -25,6 +25,7 @@ python-dotenv = "^1.0.1"
 django-bootstrap5 = "^24.3"
 django-filter = "^24.3"
 rollbar = "^1.0.0"
+coverage = "^7.6.4"
 
 
 [build-system]
