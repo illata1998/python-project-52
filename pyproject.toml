@@ -24,7 +24,7 @@ uvicorn = "^0.30.6"
 python-dotenv = "^1.0.1"
 django-bootstrap5 = "^24.3"
 django-filter = "^24.3"
-rollbar = "^1.0.0"
+rollbar = "^0.16.3"
 coverage = "^7.6.4"
 
 
