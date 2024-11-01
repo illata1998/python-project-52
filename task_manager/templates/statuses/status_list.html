@@ -9,9 +9,9 @@
 {% block content %}
 <div>
     <h1>{% trans 'Statuses' %}</h1>
-    <form action="{% url 'status_create' %}" method="get">
-        <input class="btn btn-primary" type="submit" value="{% trans 'Create Status' %}">
-    </form>
+    <a href="{% url 'status_create' %}">
+        <button type="button" class="btn btn-primary">{% trans 'Create Status' %}</button>
+    </a>
     <table class="table">
         <thead>
             <tr>

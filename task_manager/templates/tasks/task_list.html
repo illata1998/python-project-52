@@ -10,9 +10,9 @@
 {% block content %}
 <div>
     <h1>{% trans 'Tasks' %}</h1>
-    <form action="{% url 'task_create' %}" method="get">
-        <input class="btn btn-primary" type="submit" value="{% trans 'Create Task' %}">
-    </form>
+    <a href="{% url 'status_create' %}">
+        <button type="button" class="btn btn-primary">{% trans 'Create Task' %}</button>
+    </a>
     <div class="card mb-3">
         <div class="card-body bg-light">
             <form method="get" class="mb-4">
