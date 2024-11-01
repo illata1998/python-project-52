@@ -10,7 +10,6 @@
 <div>
     <h1>{% trans 'Statuses' %}</h1>
     <form action="{% url 'status_create' %}" method="get">
-        {% csrf_token %}
         <input class="btn btn-primary" type="submit" value="{% trans 'Create Status' %}">
     </form>
     <table class="table">
