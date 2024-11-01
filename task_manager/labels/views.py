@@ -16,8 +16,8 @@ class LabelListView(CustomLoginRequiredMixin, ListView):
 
 
 class LabelCreateView(CustomLoginRequiredMixin,
-                       SuccessMessageMixin,
-                       CreateView):
+                      SuccessMessageMixin,
+                      CreateView):
     model = Label
     template_name = 'form.html'
     form_class = LabelCreationForm
@@ -30,9 +30,9 @@ class LabelCreateView(CustomLoginRequiredMixin,
 
 
 class LabelDeleteView(CustomLoginRequiredMixin,
-                       ProtectErrorMixin,
-                       SuccessMessageMixin,
-                       DeleteView):
+                      ProtectErrorMixin,
+                      SuccessMessageMixin,
+                      DeleteView):
     template_name = 'labels/label_delete.html'
     model = Label
     success_url = reverse_lazy('label_list')
@@ -45,8 +45,8 @@ class LabelDeleteView(CustomLoginRequiredMixin,
 
 
 class LabelUpdateView(CustomLoginRequiredMixin,
-                       SuccessMessageMixin,
-                       UpdateView):
+                      SuccessMessageMixin,
+                      UpdateView):
     form_class = LabelCreationForm
     model = Label
     template_name = 'form.html'

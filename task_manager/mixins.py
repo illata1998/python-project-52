@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 
-
 class CustomLoginRequiredMixin(LoginRequiredMixin):
     login_url = reverse_lazy('login')
     redirect_field_name = None
@@ -57,6 +56,7 @@ class AuthorPermissionMixin(UserPassesTestMixin):
 class ProtectErrorMixin:
     protected_object_message = 'Cannot delete object because it is being used'
     protected_object_url = None
+
     def post(self, request, *args, **kwargs):
         try:
             return super().post(request, *args, **kwargs)

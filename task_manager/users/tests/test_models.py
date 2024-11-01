@@ -15,8 +15,8 @@ class TestUserModel(UserTestCase):
         self.assertEqual(user.first_name, self.valid_user_data['first_name'])
         self.assertEqual(user.last_name, self.valid_user_data['last_name'])
         self.assertEqual(str(user),
-                         self.valid_user_data['first_name'] + ' ' +
-                         self.valid_user_data['last_name'])
+                         self.valid_user_data['first_name'] + ' '
+                         + self.valid_user_data['last_name'])
 
     def test_duplicate_username(self):
         User.objects.create(
