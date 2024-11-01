@@ -37,4 +37,4 @@ make dev
 ```
 
 ## Demo
-Check out Page Analyzer by clicking [here](https://python-project-52-u7be.onrender.com).
+Check out Task Manager by clicking [here](https://python-project-52-u7be.onrender.com).
